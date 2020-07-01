@@ -1,0 +1,32 @@
+!!!
+%html
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %title RailsDocker
+    = csrf_meta_tags
+    = csp_meta_tag
+    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
+    %body
+      .wrapper
+        %header
+          %h1.title 
+            = link_to 'blogapp', '/'
+          %ul
+            %li.menu_item 
+              = link_to 'Home', '/'
+            %li.menu_item 
+              = link_to 'about', '/about'
+            %li.menu_item 
+              = link_to 'Login', 'http://google.co.jp'
+            %li.menu_item 
+              = link_to '新規登録', '/signup'
+        %nav
+          %ul.rightul
+            %a.rightli 天気・時刻  
+            %input.login-input-text{:name => "user", :placeholder => "気になるユーザー", :type => "user", :value => ""}
+            %input.submit{:value =>"検索"}
+        %footer
+          %p (c)ryurin456
+        
+  = yield
