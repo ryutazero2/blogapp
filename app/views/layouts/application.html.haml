@@ -11,16 +11,16 @@
       .wrapper
         %header
           %h1.title 
-            = link_to 'blogapp', '/'
+            = link_to 'blogapp', root_path
           %ul
             %li.menu_item 
-              = link_to 'Home', '/'
+              = link_to 'Home', root_path
             %li.menu_item 
-              = link_to 'about', '/about'
+              = link_to 'about', about_path
             %li.menu_item 
-              = link_to 'Login', 'http://google.co.jp'
+              = link_to 'Login', login_path
             %li.menu_item 
-              = link_to '新規登録', '/signup'
+              = link_to '新規登録', signup_path
         %nav
           %ul.rightul
             %a.rightli 天気・時刻  

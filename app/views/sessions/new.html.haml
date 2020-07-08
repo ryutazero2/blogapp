@@ -1,0 +1,6 @@
+%h1 ログイン
+= form_with :sessions, url: login_path do |form|
+  = form.label :name
+  = form.label :password
+  = form.password_field :password
+  = form.submit 'Login’, class: 'btn-square' 

@@ -1,10 +1,3 @@
 class UsersController < ApplicationController
-  def new
-  end
-
-  def create
-    @user = User.new(name: params[:name])
-    @user.save
-    redirect_to("/")
-  end
+  before_action :logged_in_user, only:[:edit, :update, :destroy]
 end

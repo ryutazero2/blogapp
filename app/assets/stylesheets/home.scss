@@ -1,8 +1,28 @@
-.parent {
-    width: 100%;
+.container {
     display: flex;
-   }
-   .child {
-    width: 100px;
-    text-align: center;
-   }
+    flex-direction: row;
+    justify-content: space-around;
+    .item1 {
+        align-self: flex-end;
+    }
+    .item2 {
+        display: flex;
+        align-self: flex-end;
+        color: red;
+        flex-wrap: wrap;
+        .item2-area {
+            display: flex;
+            justify-content: space-between;
+            flex-direction: column;
+        }
+    }
+    .item3 {
+        display: flex;
+        align-self: flex-end;
+        .item3-area {
+            display: flex;
+            justify-content: space-between;
+            flex-direction: column;
+        }
+    }
+}
