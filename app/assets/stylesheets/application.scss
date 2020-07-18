@@ -33,31 +33,6 @@ header {
     }
 }
 
-nav {
-    width: 100vw;
-    min-width: 1000px;
-    background-color: blue;
-    height: 30px;
-    align-items: center;
-    .rightul {
-        text-align: right;
-        .rightli {
-            display: inline;
-        }
-    }
-}
-
-footer {
-    width: 100vw;
-    height: 30px;
-    background-image: image-url("79987891.png");
-    color: red;
-    text-align: center;
-    padding: 5px;
-    position: fixed;
-    bottom: 0;
-}
-
 @import 'home';
 @import 'users';
 @import 'about';

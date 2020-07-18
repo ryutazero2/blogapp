@@ -1,2 +1,11 @@
-%h1 Users#new
-%p Find me in app/views/users/new.html.haml
+.content
+  %h1 新規追加
+  = form_with url: 'users/create' do |form|
+    .input 
+      .name
+        = form.label :name
+        = form.text_field :name
+      .pass
+        = form.label :password
+        = form.password_field :password
+    = form.submit '新規追加', class: 'btn-square'
