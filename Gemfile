@@ -15,6 +15,8 @@ gem 'dotenv-rails'
 gem 'haml-rails'
 gem 'erb2haml'
 gem 'bcrypt'
+gem 'rubocop'
+gem 'rubocop-rails'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
