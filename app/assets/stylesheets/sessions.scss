@@ -1,19 +1,11 @@
 .content {
     width: 700px;
     text-align: end;
-}
-
-label {
-    color: blue;
-    font-size: 16px;
-}
-
-#btn-square {
-    display: inline-block;
-    padding: 0.5em 1em;
-    text-decoration: none;
-    background: #668ad8;
-    color: #FFF;
-    border-bottom: solid 4px #627295;
-    border-radius: 3px;
+    label {
+        color: blue;
+        font-size: 16px;
+    }
+    .btn-square {
+        color: red;
+    }
 }

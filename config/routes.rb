@@ -8,7 +8,9 @@ Rails.application.routes.draw do
 
   get 'signup', to: 'users#new'
   post 'users/create', to: 'users#create'
-  get '/users/:name', to: 'users#show'
+  get 'users/:name', to: 'users#show'
+  get 'users/:name/edit', to: 'users#edit'
+  post 'users/:name/update', to: 'users#update'
 
   get 'newblog', to: 'posts#new'
 

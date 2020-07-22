@@ -1,0 +1,8 @@
+.content
+  %h1 
+    = @user.name
+  = form_with url: "update" do |form|
+    .input 
+      .profile
+        = form.text_field :profile
+      = form.submit '更新', class: 'btn-square'

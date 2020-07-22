@@ -1,6 +1,15 @@
 - if flash[:notice]
   %p
     = flash[:notice]
-    
-%h1 
-  = @user.name
+
+.contents
+  %h1
+    = @user.name
+  .user_area
+    = @user.profile
+  %img(src="{@user.image_name}")
+  -if current_user?(@user)
+    .edit_btn
+      = link_to '編集', "/users/#{@user.name}/edit"
+    .post_btn
+      = link_to '投稿する', newblog_path

@@ -1,5 +1,7 @@
 .content
   %h1 新規追加
+  - @user.errors.full_messages.each do |message|
+    = message
   = form_with url: 'users/create' do |form|
     .input 
       .name
