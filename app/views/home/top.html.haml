@@ -1,15 +1,11 @@
 !!!
 %html
-    %head
-        %body
-            .container
-                .item1 
-                    .item1-area
-                .item2
-                    .item2-area
-                        %p
-                            = link_to image_tag('B03C7B2B-4001-49D7-A8C6-8D7D1EFB48E9_1_105_c.jpeg', width: '375', alt: 'test'),root_path
-                        %p
-                            = link_to image_tag('B03C7B2B-4001-49D7-A8C6-8D7D1EFB48E9_1_105_c.jpeg', width: '375', alt: 'test'),root_path
-                        %p    
-                            = link_to image_tag('B03C7B2B-4001-49D7-A8C6-8D7D1EFB48E9_1_105_c.jpeg', width: '375', alt: 'test'),root_path
+  %head
+    %body
+      - if flash[:notice]
+        = flash[:notice]
+      .container
+        .item1 
+          .item1-area
+        .item2
+          .item2-area

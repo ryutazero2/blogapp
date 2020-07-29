@@ -2,7 +2,7 @@
   %h1 新規追加
   - @user.errors.full_messages.each do |message|
     = message
-  = form_with url: 'users/create' do |form|
+  = form_with url: signup_path ,local:true do |form|
     .input 
       .name
         = form.label :name

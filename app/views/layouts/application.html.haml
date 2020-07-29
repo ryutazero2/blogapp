@@ -5,8 +5,8 @@
     %title RailsDocker
     = csrf_meta_tags
     = csp_meta_tag
-    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
-    = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
+    = stylesheet_link_tag 'application', media: 'all'
+    = javascript_pack_tag 'application'
     %body
       .wrapper
         %header
@@ -28,5 +28,5 @@
               %li.menu_item
                 = link_to '新規投稿', newblog_path
               %li.menu_item
-                = link_to '○', "/users/abc"    
+                = link_to "@#{current_user.name}", "/users/#{current_user.name}"    
   = yield

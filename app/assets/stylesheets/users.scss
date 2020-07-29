@@ -3,12 +3,43 @@ label {
     font-size: 16px;
 }
 
-#btn-square {
+.config-area {
+    .success-area {
+        color: red;
+    }
+    .btn-area {
+        display: flex;
+        justify-content: flex-end;
+    }
+}
+
+.contents {
+    background: lightgray;
+    height: 200px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-start;
+    flex-direction: column;
+    .avatar-area {
+        color: blue;
+    }
+    .displayname-area {
+        font-size: xx-large;
+    }
+    .uid-area {}
+    .text-area {
+        resize: none;
+        width: 300px;
+        height: 200px;
+    }
+}
+
+.delete-btn {
     display: inline-block;
     padding: 0.5em 1em;
     text-decoration: none;
     background: #668ad8;
-    color: #FFF;
+    color: blue;
     border-bottom: solid 4px #627295;
     border-radius: 3px;
 }

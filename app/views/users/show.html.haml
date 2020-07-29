@@ -1,15 +1,27 @@
-- if flash[:notice]
-  %p
-    = flash[:notice]
+.config-area
+  .success-area
+    - if flash[:notice]
+      %p
+        = flash[:notice]
+  .btn-area
+    - if current_user?(@user)
+      .edit-btn
+        = link_to '編集', "/users/#{@user.name}/edit"
+      .delete-btn
+        = link_to '退会する', "/users/#{@user.name}/delete"
 
 .contents
-  %h1
-    = @user.name
-  .user_area
+  .avatar-area
+    - if @user.avatar.attached?
+      = image_tag @user.avatar, :size  => "100x100" 
+    - else
+      = image_tag "default.png", :size => "100x100" 
+  .displayname-area
+    - if @user.displayname && @user.displayname != ""
+      = @user.displayname
+    - else
+      = @user.name
+  .uid-area
+    = "@#{@user.name}"
+  .profile-area
     = @user.profile
-  %img(src="{@user.image_name}")
-  -if current_user?(@user)
-    .edit_btn
-      = link_to '編集', "/users/#{@user.name}/edit"
-    .post_btn
-      = link_to '投稿する', newblog_path

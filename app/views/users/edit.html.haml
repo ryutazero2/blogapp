@@ -1,8 +1,16 @@
 .content
   %h1 
-    = @user.name
-  = form_with url: "update" do |form|
+    = @user.displayname
+  %p
+    = "@#{@user.name}"
+  = form_with url: "/users/#{@user.name}/update" , local:true do |form|
     .input 
-      .profile
-        = form.text_field :profile
-      = form.submit '更新', class: 'btn-square'
+      .displayname-area
+        = form.label :表示名
+        = form.text_field :displayname, maxlength: '50', :value => @user.displayname
+      .prifile-area
+        = form.label :プロフィール
+        = form.text_area :profile, maxlength: '150', :value => @user.profile
+        %br
+        = form.file_field :avatar
+      = form.submit '更新', class: 'edit-btn'

@@ -7,8 +7,10 @@ Rails.application.routes.draw do
   delete '/logout',  to: 'sessions#destroy'
 
   get 'signup', to: 'users#new'
-  post 'users/create', to: 'users#create'
+  post 'signup', to: 'users#create'
   get 'users/:name', to: 'users#show'
+  get 'users/:name/delete', to: 'users#delete'
+  delete 'users/:name/destory' , to: 'users#destory'
   get 'users/:name/edit', to: 'users#edit'
   post 'users/:name/update', to: 'users#update'
 

@@ -1,6 +1,9 @@
 .content
   %h1 ログイン
-  = form_with url: login_path do |form|
+  - if flash[:alert]
+    = flash[:alert]
+
+  = form_with url: login_path , local:true do |form|
     .input 
       .name
         = form.label :ログインID
@@ -8,4 +11,4 @@
       .pass
         = form.label :パスワード
         = form.password_field :password
-      = form.submit 'Login', class: 'btn-square' 
+      = form.submit 'Login', class: 'login-btn' 
