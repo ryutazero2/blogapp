@@ -1,13 +1,13 @@
 .content
   %h1 
-    = @user.displayname
+    = @user.display_name
   %p
     = "@#{@user.name}"
-  = form_with url: "/users/#{@user.name}/update" , local:true do |form|
+  = form_with url: user_path(@user.name), method: :patch, local:true do |form|
     .input 
       .displayname-area
         = form.label :表示名
-        = form.text_field :displayname, maxlength: '50', :value => @user.displayname
+        = form.text_field :display_name, maxlength: '50', :value => @user.display_name
       .prifile-area
         = form.label :プロフィール
         = form.text_area :profile, maxlength: '150', :value => @user.profile

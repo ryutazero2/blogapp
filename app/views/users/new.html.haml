@@ -2,11 +2,11 @@
   %h1 新規追加
   - @user.errors.full_messages.each do |message|
     = message
-  = form_with url: signup_path ,local:true do |form|
+  = form_with url: register_path ,local:true do |form|
     .input 
       .name
         = form.label :name
-        = form.text_field :name
+        = form.text_field :name,:value => @name
       .pass
         = form.label :password
         = form.password_field :password

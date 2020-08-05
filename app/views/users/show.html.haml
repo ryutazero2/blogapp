@@ -6,21 +6,15 @@
   .btn-area
     - if current_user?(@user)
       .edit-btn
-        = link_to '編集', "/users/#{@user.name}/edit"
+        = link_to '編集', edit_user_path
       .delete-btn
-        = link_to '退会する', "/users/#{@user.name}/delete"
+        = link_to '退会する', "/users/#{@user.name}/delete_user"
 
 .contents
   .avatar-area
-    - if @user.avatar.attached?
-      = image_tag @user.avatar, :size  => "100x100" 
-    - else
-      = image_tag "default.png", :size => "100x100" 
+    = image_tag @user.avatar, :size  => "100x100" 
   .displayname-area
-    - if @user.displayname && @user.displayname != ""
-      = @user.displayname
-    - else
-      = @user.name
+    = @user.display_name
   .uid-area
     = "@#{@user.name}"
   .profile-area
