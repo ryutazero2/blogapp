@@ -1,12 +1,13 @@
 class ApplicationController < ActionController::Base
-    rescue_from Exception, with: :logged_in_user
     include SessionsHelper
+    rescue_from Exceptions::AuthError do |exception|
+        redirect_to login_url
+    end
 
     private
     # ログイン済みユーザーかどうか確認
-    def logged_in_user(e)
-        @exception = e
-        redirect_to login_url unless logged_in?
+    def logged_in_user
+        fail Exceptions::AuthError unless logged_in?
     end
 
     # ログイン状態を確認する
