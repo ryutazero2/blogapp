@@ -3,6 +3,9 @@
   - if flash[:alert]
     = flash[:alert]
 
+  - if flash[:notice]
+    = flash[:notice]
+
   = form_with url: login_path , local:true do |form|
     .input 
       .name

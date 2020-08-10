@@ -1,7 +1,6 @@
 class UsersController < ApplicationController
   before_action :logged_in_user, only:[:edit, :update, :delete_user, :destroy]
-  before_action :ensure_correct_user, only:[:edit, :update, :delete_user, :destroy]
-  before_action :forbid_login_user, only:[:create]
+  before_action :forbid_login_user, only:[:new,:create]
 
   def new
     @user = User.new
@@ -30,6 +29,7 @@ class UsersController < ApplicationController
 
   def edit
     @user = User.find_by(name: params[:name])
+    permit_check
   end
 
   def update
@@ -38,14 +38,18 @@ class UsersController < ApplicationController
     @user.profile = params[:profile]
     @user.display_name = params[:display_name] if params[:display_name].present?
     if @user.save
+      flash[:notice] = 'ユーザー情報を更新しました'
       redirect_to user_url(@user.name)
     else
+      flash.now[:alert] ='変更に失敗しました'
       render 'edit'
     end
+    permit_check
   end
 
   def delete_user
     @user = User.find_by(name: params[:name])
+    permit_check
   end
 
   def destroy
@@ -54,12 +58,6 @@ class UsersController < ApplicationController
     session[:user_id] = nil
     flash[:notice] = "退会しました"
     redirect_to root_path
-  end
-
-  def ensure_correct_user
-    if @current_user.name != params[:name]
-      flash[:notice] = '権限がありません'
-      redirect_to root_path
-    end
+    permit_check
   end
 end

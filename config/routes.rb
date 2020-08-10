@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   post 'register', to: 'users#create'
 
   resources :users, param: :name,  except: [:index,:create]
-  get 'users/:name/delete_user', to: 'users#delete_user'
+  get 'users/:name/delete_user', to: 'users#delete_user', as: :delete_user
   
   get 'blogs/new', to: 'posts#new'
 
