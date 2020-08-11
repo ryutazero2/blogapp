@@ -1,12 +1,11 @@
 class ApplicationController < ActionController::Base
     include SessionsHelper
+
     rescue_from Exceptions::AuthError do |exception|
-        flash[:notice] = '権限がありません'
         redirect_to login_url
     end
 
     rescue_from Exceptions::PermissionError do |exception|
-        flash[:notice] = '権限がありません'
         render 'layouts/error.html' 
     end
 
@@ -20,12 +19,12 @@ class ApplicationController < ActionController::Base
     def forbid_login_user
         if current_user 
             flash[:notice] = 'すでにログインしています'
-            redirect_to root_path
+            redirect_to root_url
         end
     end
 
     #ログイン中以外のユーザーからのアクセスを禁止にする
-    def permit_check
-        fail Exceptions::PermissionError unless current_user?(@user)
+    def authorize!
+        fail Exceptions::PermissionError unless current_user?(User.find_by(name: params[:name]))
     end
 end

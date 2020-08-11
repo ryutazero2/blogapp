@@ -28,6 +28,7 @@
               %li.menu_item
                 = link_to '新規投稿', blogs_new_path
               %li.menu_item
-                = link_to  "/users/#{current_user.name}" do
+                = link_to  user_url(current_user.name) do
                   = image_tag current_user.avatar, :size  => "64x64" 
+        
   =yield
