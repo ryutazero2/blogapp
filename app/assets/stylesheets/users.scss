@@ -1,45 +1,82 @@
-label {
-    color: red;
-    font-size: 16px;
-}
-
-.config-area {
-    .success-area {
-        color: red;
-    }
-    .btn-area {
-        display: flex;
-        justify-content: flex-end;
-    }
-}
-
-.contents {
-    background: lightgray;
-    height: 200px;
-    display: flex;
-    justify-content: flex-end;
-    align-items: flex-start;
-    flex-direction: column;
-    .avatar-area {
-        color: blue;
-    }
-    .displayname-area {
-        font-size: xx-large;
-    }
-    .uid-area {}
-    .text-area {
-        resize: none;
-        width: 300px;
-        height: 200px;
+.user-info-area {
+    position: static;
+    top: 10px;
+    height: 300px;
+    text-align: center;
+    .info-area {
+        display: inline-block;
+        text-align: left;
+        height: 260px;
+        background-color: cyan;
+        border: 1px solid black;
+        .display_name-area {
+            font-size: large;
+            font-weight: bolder;
+            width: 600px;
+        }
+        .profile-area {
+            width: 600px;
+            word-break: normal;
+        }
     }
 }
 
-.delete-btn {
+.btn-area {
+    position: static;
+    top: 800px;
+    left: 800px;
+    text-align: right;
+}
+
+.user-btn {
     display: inline-block;
     padding: 0.5em 1em;
     text-decoration: none;
-    background: #668ad8;
-    color: blue;
-    border-bottom: solid 4px #627295;
     border-radius: 3px;
+}
+
+.user-info-area img {
+    border-radius: 50%;
+    width: 80px;
+    height: 80px;
+    border: 1px solid black;
+}
+
+.edit-user-area {
+    text-align: center;
+}
+
+.edit-user-area img {
+    border-radius: 50%;
+    width: 80px;
+    height: 80px;
+    border: 1px solid black;
+}
+
+.user-edit-area {
+    position: static;
+    top: 10px;
+    height: 300px;
+    display: flex;
+    justify-content: center;
+}
+
+.user-edit-area label {
+    text-align: center;
+}
+
+.user-edit-area textarea {
+    resize: none;
+    width: 300px;
+    height: 110px;
+    vertical-align: top;
+}
+
+.delete_messages {
+    text-align: center;
+}
+
+.delete-area {
+    text-align: center;
+    font-size: large;
 }

@@ -1,19 +1,22 @@
-.edit-result
+.flash-area
   - if flash[:alert]
     = flash[:alert]
-.content
-  %h1 
+
+.edit-user-area
+  .avatar-area
+    = image_tag @user.avatar
+  .user_display-name-area
     = @user.display_name
-  %p
-    = "@#{@user.name}"
+
+.user-edit-area
   = form_with url: user_path(@user.name), method: :patch, local:true do |form|
-    .input 
-      .displayname-area
-        = form.label :表示名
-        = form.text_field :display_name, maxlength: '50', :value => @user.display_name
-      .prifile-area
-        = form.label :プロフィール
-        = form.text_area :profile, maxlength: '150', :value => @user.profile
-        %br
-        = form.file_field :avatar
-      = form.submit '更新', class: 'edit-btn'
+    .input
+      = form.label :'アバター:'
+      = form.file_field :avatar
+    
+      = form.label :'表示名:'
+      = form.text_field :display_name, maxlength: '30', :value => @user.display_name
+      %br
+      = form.label :'プロフィール:'
+      = form.text_area :profile, maxlength: '150', :value => @user.profile
+    = form.submit '更新', class: 'user-btn'

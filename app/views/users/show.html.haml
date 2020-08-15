@@ -1,21 +1,21 @@
-.config-area
-  .success-area
+#show-area
+  .flash-area
     - if flash[:notice]
-      %p
-        = flash[:notice]
+      = flash[:notice]
+
+  .user-info-area
+    .info-area
+      .avatar-area
+        = image_tag @user.avatar
+      .display_name-area
+        = @user.display_name
+        %br
+      .username-area
+        = "@#{@user.name}"
+        %br
+      .profile-area
+        = @user.profile
   .btn-area
     - if current_user?(@user)
-      .edit-btn
-        = link_to '編集', edit_user_path
-      .delete-btn
-        = link_to '退会する', delete_user_path
-
-.contents
-  .avatar-area
-    = image_tag @user.avatar, :size  => "100x100" 
-  .displayname-area
-    = @user.display_name
-  .uid-area
-    = "@#{@user.name}"
-  .profile-area
-    = @user.profile
+      = link_to '編集', edit_user_path, class: 'link-text'
+      = link_to '退会', delete_user_path, class: 'link-text'

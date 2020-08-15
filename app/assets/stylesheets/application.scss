@@ -33,24 +33,29 @@ header {
     }
 }
 
-.add-btn {
+.flash-area {
+    background-color: white;
+    text-align: center;
+    height: 50px;
+}
+
+.user-btn {
     display: inline-block;
     padding: 0.5em 1em;
     text-decoration: none;
-    background: #668ad8;
-    color: blue;
-    border-bottom: solid 4px #627295;
+    color: black;
+    background: greenyellow;
     border-radius: 3px;
 }
 
-.edit-btn {
-    display: inline-block;
-    padding: 0.5em 1em;
+.alert {
+    color: red;
+    text-align: center;
+}
+
+.link-text {
     text-decoration: none;
-    background: #668ad8;
-    color: blue;
-    border-bottom: solid 4px #627295;
-    border-radius: 3px;
+    color: black;
 }
 
 @import 'home';

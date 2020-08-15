@@ -14,7 +14,7 @@ class UsersController < ApplicationController
       display_name: params[:name],
       profile: 'よろしくお願いします')
     if @user.save
-      flash[:notice] = '登録しました'
+      flash[:notice] = 'blogappへようこそ！'
       session[:user_id] = @user.id
       @user.avatar.attach(io: File.open(Rails.root.join('app', 'assets', 'images', 'default.png')), filename: 'default.png', content_type: 'image/png')
       redirect_to user_url(@user.name)
@@ -38,7 +38,6 @@ class UsersController < ApplicationController
     @user.profile = params[:profile]
     @user.display_name = params[:display_name] if params[:display_name].present?
     if @user.save
-      flash[:notice] = 'ユーザー情報を更新しました'
       redirect_to user_url(@user.name)
     else
       flash.now[:alert] ='変更に失敗しました'

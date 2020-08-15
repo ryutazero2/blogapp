@@ -1,11 +1,4 @@
-!!!
-%html
-  %head
-    %body
-      - if flash[:notice]
-        = flash[:notice]
-      .container
-        .item1 
-          .item1-area
-        .item2
-          .item2-area
+#show-area
+  .flash-area
+    - if flash[:notice]
+      = flash[:notice]
