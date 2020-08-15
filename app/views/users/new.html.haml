@@ -5,11 +5,11 @@
 .form-area
   %h1 新規追加
   = form_with url: register_path ,local:true do |form|
-    .input 
-      .name
+    %div
+      %div
         = form.label :name
         = form.text_field :name, maxlength:'20',:value => @name
-      .pass
+      %div
         = form.label :password
         = form.password_field :password
     = form.submit '新規追加', class: 'btn-square'

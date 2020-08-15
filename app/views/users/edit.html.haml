@@ -10,13 +10,14 @@
 
 .user-edit-area
   = form_with url: user_path(@user.name), method: :patch, local:true do |form|
-    .input
-      = form.label :'アバター:'
-      = form.file_field :avatar
-    
-      = form.label :'表示名:'
-      = form.text_field :display_name, maxlength: '30', :value => @user.display_name
-      %br
-      = form.label :'プロフィール:'
-      = form.text_area :profile, maxlength: '150', :value => @user.profile
+    %ul
+      %li.edit-item
+        = form.label :'アバター:'
+        = form.file_field :avatar
+      %li.edit-item
+        = form.label :'表示名:'
+        = form.text_field :display_name, maxlength: '30', :value => @user.display_name
+      %li.edit-item
+        = form.label :'プロフィール:'
+        = form.text_area :profile, maxlength: '150', :value => @user.profile
     = form.submit '更新', class: 'user-btn'

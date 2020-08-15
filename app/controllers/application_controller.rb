@@ -24,7 +24,7 @@ class ApplicationController < ActionController::Base
     end
 
     #ログイン中以外のユーザーからのアクセスを禁止にする
-    def authorize!
-        fail Exceptions::PermissionError unless current_user?(User.find_by(name: params[:name]))
+    def authorize!(user)
+        fail Exceptions::PermissionError unless current_user?(user)
     end
 end
