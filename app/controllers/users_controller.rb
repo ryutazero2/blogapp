@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :set_user
+  before_action :set_user, except:[:new, :create]
   before_action :logged_in_user, only:[:edit, :update, :delete_user, :destroy]
   before_action -> () { authorize!(@user) }, only:[:edit, :update, :delete_user, :destroy]
   before_action :forbid_login_user, only:[:new,:create]
