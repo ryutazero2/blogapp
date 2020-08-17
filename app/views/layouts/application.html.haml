@@ -1,0 +1,33 @@
+!!!
+%html
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %title RailsDocker
+    = csrf_meta_tags
+    = csp_meta_tag
+    = stylesheet_link_tag 'application', media: 'all'
+    = javascript_pack_tag 'application'
+    %body
+      .wrapper
+        %header
+          %h1.title 
+            = link_to 'blogapp', root_path, class: 'link-text'
+          %ul
+            %li.menu_item 
+              = link_to 'Home', root_path, class: 'link-text'
+            %li.menu_item 
+              = link_to 'about', about_path, class: 'link-text'
+            -if session[:user_id].blank?
+              %li.menu_item 
+                = link_to 'ログイン', login_path, class: 'link-text'
+              %li.menu_item 
+                = link_to '新規登録', register_path, class: 'link-text'
+            -else
+              %li.menu_item 
+                = link_to 'ログアウト', logout_path, method: :delete, class: 'link-text'
+              %li.menu_item
+                = link_to '新規投稿', blogs_new_path, class: 'link-text'
+              %li.menu_item
+                = link_to  'マイページ', user_url(current_user.name), class: 'link-text'
+        
+  =yield
