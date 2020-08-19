@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ApplicationController < ActionController::Base
   include SessionsHelper
 
@@ -18,10 +20,10 @@ class ApplicationController < ActionController::Base
 
   # ログイン状態を確認する
   def forbid_login_user
-    if current_user
-      flash[:notice] = 'すでにログインしています'
-      redirect_to root_url
-    end
+    return unless current_user
+
+    flash[:notice] = 'すでにログインしています'
+    redirect_to root_url
   end
 
   # ログイン中以外のユーザーからのアクセスを禁止にする

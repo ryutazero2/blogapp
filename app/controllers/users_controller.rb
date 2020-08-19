@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class UsersController < ApplicationController
   before_action :set_user, except: %i[new create]
   before_action :logged_in_user, only: %i[edit update delete_user destroy]
@@ -18,10 +20,15 @@ class UsersController < ApplicationController
     if @user.save
       flash[:notice] = 'blogappへようこそ！'
       session[:user_id] = @user.id
-      @user.avatar.attach(io: File.open(Rails.root.join('app', 'assets', 'images', 'default.png')), filename: 'default.png', content_type: 'image/png')
+      @user.avatar.attach(
+        io: File.open(Rails.root.join('app', 'assets', 'images', 'default.png')),
+        filename: 'default.png',
+        content_type: 'image/png'
+      )
       redirect_to user_url(@user.name)
     else
       @name = params[:name]
+      flash.now[:alert] = @user.errors.full_messages
       render 'new'
     end
   end
