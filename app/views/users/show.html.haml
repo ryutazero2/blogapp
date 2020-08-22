@@ -3,13 +3,14 @@
     .avatar-area
       = image_tag @user.avatar
     .display_name-area
-      = @user.display_name
-      %br
+      %div
+        = @user.display_name
     .username-area
-      = "@#{@user.name}"
-      %br
+      %div
+        = "@#{@user.name}"
     .profile-area
-      = @user.profile
+      %div
+        = @user.profile
   .btn-area
     - if current_user?(@user)
       = link_to '編集', edit_user_path, class: 'link-text'

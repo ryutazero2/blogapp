@@ -2,7 +2,7 @@
   %h1 新規追加
   = form_with url: register_path ,local:true do |form|
     %div
-      %div
+      .name
         = form.label :name
         = form.text_field :name, maxlength:'20',:value => @name
       .pass
