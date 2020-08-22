@@ -4,7 +4,6 @@ AllCops:
         - 'node_modules/**/*'
         - 'bin/*'
         - 'db/**/*'
-        - 'config/**/*'
         - 'test/**/*'
         - 'spec/**/*'
 

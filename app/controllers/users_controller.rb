@@ -10,6 +10,7 @@ class UsersController < ApplicationController
     @user = User.new
   end
 
+  # rubocop:disable Metrics/AbcSize:
   def create
     @user = User.new(
       name: params[:name],
@@ -32,6 +33,7 @@ class UsersController < ApplicationController
       render 'new'
     end
   end
+  # rubocop:enable Metrics/AbcSize:
 
   def set_user
     @user = User.find_by(name: params[:name])
