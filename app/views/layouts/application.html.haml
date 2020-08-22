@@ -29,5 +29,12 @@
                 = link_to '新規投稿', blogs_new_path, class: 'link-text'
               %li.menu_item
                 = link_to  'マイページ', user_url(current_user.name), class: 'link-text'
-        
+        .flash-area
+          -flash.each do |type, payload|
+            - if payload.is_a?(Array)
+              - payload.each do |message|
+                %div
+                  = message
+            - else
+              = payload
   =yield

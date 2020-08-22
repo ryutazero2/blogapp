@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 Rails.application.routes.draw do
   root to: 'home#top'
-  get 'about' , to: 'about#index'
+  get 'about', to: 'about#index'
 
   get    '/login',   to: 'sessions#new'
   post   '/login',   to: 'sessions#create'
@@ -9,9 +11,8 @@ Rails.application.routes.draw do
   get 'register', to: 'users#new'
   post 'register', to: 'users#create'
 
-  resources :users, param: :name,  except: [:index,:create]
+  resources :users, param: :name,  except: %i[index create]
   get 'users/:name/delete_user', to: 'users#delete_user', as: :delete_user
-  
-  get 'blogs/new', to: 'posts#new'
 
+  get 'blogs/new', to: 'posts#new'
 end

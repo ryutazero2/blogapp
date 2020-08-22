@@ -1,19 +1,15 @@
-#show-area
-  .flash-area
-    - if flash[:notice]
-      = flash[:notice]
-
-  .user-info-area
-    .info-area
-      .avatar-area
-        = image_tag @user.avatar
-      .display_name-area
+.user-info-area
+  .info-area
+    .avatar-area
+      = image_tag @user.avatar
+    .display_name-area
+      %div
         = @user.display_name
-        %br
-      .username-area
+    .username-area
+      %div
         = "@#{@user.name}"
-        %br
-      .profile-area
+    .profile-area
+      %div
         = @user.profile
   .btn-area
     - if current_user?(@user)
