@@ -1,0 +1,6 @@
+%h1
+  = @posts.title
+
+- if current_user?(current_user)
+  = link_to '編集', root_path
+  = link_to '削除', root_path

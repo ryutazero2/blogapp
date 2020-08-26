@@ -11,8 +11,11 @@ Rails.application.routes.draw do
   get 'register', to: 'users#new'
   post 'register', to: 'users#create'
 
-  resources :users, param: :name,  except: %i[index create]
+  resources :users, param: :name,  except: %i[index create] do
+    resources :posts, only: [:show]
+  end
   get 'users/:name/delete_user', to: 'users#delete_user', as: :delete_user
 
   get 'blogs/new', to: 'posts#new'
+  post 'blogs/new', to: 'posts#create'
 end

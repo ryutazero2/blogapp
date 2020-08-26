@@ -1,2 +1,10 @@
-%h1 Posts#new
-%p Find me in app/views/posts/new.html.haml
+.new-post-area
+  %h1 新規投稿
+  = form_with url: blogs_new_path ,local:true do |form|
+    %div
+      .title
+        = form.label :タイトル
+        = form.text_field :title, :value => @title
+      .content
+        = form.text_area :content, :value => @content
+    = form.submit '投稿', class: 'btn-square'

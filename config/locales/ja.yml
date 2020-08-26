@@ -6,3 +6,6 @@ ja:
             user:
                 name: ユーザー名 
                 password: パスワード
+            post:
+                title: タイトル
+                content: 本文

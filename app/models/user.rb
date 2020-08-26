@@ -3,6 +3,7 @@
 class User < ApplicationRecord
   has_secure_password
   has_one_attached :avatar
+  has_many :posts, dependent: :destroy
 
   validates :name,
             presence: { message: 'を入力してください' },
@@ -18,4 +19,8 @@ class User < ApplicationRecord
 
   validates :profile,
             length: { maximum: 150 }
+
+  def posts
+    Post.where(user_id: id)
+  end
 end
