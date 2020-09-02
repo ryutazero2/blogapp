@@ -19,8 +19,4 @@ class User < ApplicationRecord
 
   validates :profile,
             length: { maximum: 150 }
-
-  def posts
-    Post.where(user_id: id)
-  end
 end

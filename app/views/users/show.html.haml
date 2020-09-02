@@ -24,6 +24,6 @@
             = post.created_at.to_s(:datetime_jp)
         .text-area
           %div
-            = link_to post.title, user_post_path(@user.name,post.id)
+            = link_to post.title, user_show_post_path(@user.name,post.title,post.number)
       .content-area
         = post.content

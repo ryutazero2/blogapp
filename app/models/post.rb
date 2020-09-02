@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+
 class Post < ApplicationRecord
   belongs_to :user
 
@@ -10,6 +11,4 @@ class Post < ApplicationRecord
             presence: { message: 'を入力してください' }
 
   validates :user_id, presence: true
-
-  
 end

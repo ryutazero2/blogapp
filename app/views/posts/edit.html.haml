@@ -1,0 +1,8 @@
+= form_with url:  user_edit_post_path(current_user.name,@post.title,@post.number) ,local:true do |form|
+  %div
+    .title
+      = form.label :タイトル
+      = form.text_field :title, :value => @post.title
+    .content
+      = form.text_area :content, :value => @post.content
+  = form.submit '投稿', class: 'btn-square'

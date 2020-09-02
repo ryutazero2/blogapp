@@ -1,6 +1,14 @@
-%h1
-  = @posts.title
+.post-info-area
+  .posts-area
+    .title-area
+      .text-area
+        %div
+          = @post.title
+      .content-area
+        %div
+          = @post.content
 
-- if current_user?(current_user)
-  = link_to '編集', root_path
-  = link_to '削除', root_path
+.post-edit-area
+  -if current_user?(current_user) && logged_in?
+    = link_to '編集', user_edit_post_path(current_user.name,@post.title,@post.number),class: 'link-text'
+    = link_to '削除', user_destroy_post_path(current_user.name,@post.title,@post.number),method:'delete',class: 'link-text'
