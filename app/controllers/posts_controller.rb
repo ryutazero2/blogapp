@@ -1,16 +1,22 @@
 # frozen_string_literal: true
 
 class PostsController < ApplicationController
-  before_action :set_post, except: %i[new create]
+  before_action :set_post, except: %i[new create show]
   before_action :logged_in_user, only: %i[new]
 
+  # rubocop:disable Metrics/AbcSize:
   def create
     @post = Post.new(
       title: params[:title],
       content: params[:content],
-      user_id: current_user.id,
-      number: Post.where(user_id: current_user).count + 1
+      user_id: current_user.id
     )
+    @post.number = if Post.where(user_id: current_user).blank?
+                     1
+                   else
+                     Post.where(user_id: current_user).maximum(:number) + 1
+                   end
+
     if @post.save
       flash[:notice] = '記事を投稿しました'
       redirect_to user_url(current_user.name)
@@ -26,7 +32,15 @@ class PostsController < ApplicationController
     @post = Post.find_by(title: params[:title], number: params[:number])
   end
 
-  def show; end
+  def show
+    @post = Post.joins(:user).find_by(
+      'users.name': params[:user_name],
+      title: params[:title],
+      number: params[:number]
+    )
+  end
+
+  # rubocop:enable Metrics/AbcSize:
 
   def edit; end
 
