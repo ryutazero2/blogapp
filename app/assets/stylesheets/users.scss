@@ -86,3 +86,29 @@
     text-align: center;
     font-size: large;
 }
+
+.post-info-area {
+    position: static;
+    top: 10px;
+    height: 300px;
+    .posts-area {
+        width: 700px;
+        margin: 0 auto;
+        .title-area {
+            padding: 10px;
+            border: 2px solid;
+            border-radius: 8px;
+            .time-area {
+                text-align: right;
+                font-size: smaller;
+            }
+            .text-area {
+                text-align: center;
+            }
+        }
+        .content-area {
+            text-align: left;
+            white-space: pre-line;
+        }
+    }
+}

@@ -15,3 +15,15 @@
     - if current_user?(@user)
       = link_to '編集', edit_user_path, class: 'link-text'
       = link_to '退会', delete_user_path, class: 'link-text'
+.post-info-area
+  - @posts.reverse_each do |post| 
+    .posts-area
+      .title-area
+        .time-area
+          %div
+            = post.created_at.to_s(:datetime_jp)
+        .text-area
+          %div
+            = link_to post.title, user_show_post_path(@user.name,post.title,post.number)
+      .content-area
+        = post.content

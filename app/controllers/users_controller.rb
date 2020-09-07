@@ -39,7 +39,9 @@ class UsersController < ApplicationController
     @user = User.find_by(name: params[:name])
   end
 
-  def show; end
+  def show
+    @posts = @user.posts
+  end
 
   def edit; end
 
