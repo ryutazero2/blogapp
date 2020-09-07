@@ -6,16 +6,13 @@ class PostsController < ApplicationController
 
   # rubocop:disable Metrics/AbcSize:
   def create
-    @post = Post.new(
-      title: params[:title],
-      content: params[:content],
-      user_id: current_user.id
-    )
-    @post.number = if Post.where(user_id: current_user).blank?
-                     1
-                   else
-                     Post.where(user_id: current_user).maximum(:number) + 1
-                   end
+    @post = Post.new(title: params[:title],content: params[:content],user_id: current_user.id) do |post|
+      if Post.where(user_id: current_user).blank?
+        post.number = 1
+      else
+        post.number = Post.where(user_id: current_user).maximum(:number) + 1
+      end
+    end
 
     if @post.save
       flash[:notice] = '記事を投稿しました'
