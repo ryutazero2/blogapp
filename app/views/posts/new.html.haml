@@ -6,5 +6,5 @@
         = form.label :タイトル
         = form.text_field :title, :value => @title
       .content
-        = form.text_area :content, :value => @content
+        = form.rich_text_area :content, :value => @content
     = form.submit '投稿', class: 'btn-square'

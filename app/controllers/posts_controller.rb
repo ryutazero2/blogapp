@@ -4,14 +4,18 @@ class PostsController < ApplicationController
   before_action :set_post, except: %i[new create show]
   before_action :logged_in_user, only: %i[new]
 
+  def post_params
+    params.require(:post).permit(:title,:content)
+  end
+
   # rubocop:disable Metrics/AbcSize:
   def create
-    @post = Post.new(title: params[:title],content: params[:content],user_id: current_user.id) do |post|
-      if Post.where(user_id: current_user).blank?
-        post.number = 1
-      else
-        post.number = Post.where(user_id: current_user).maximum(:number) + 1
-      end
+    @post = Post.new(title: params[:title], content: params[:content], user_id: current_user.id) do |post|
+      post.number = if Post.where(user_id: current_user).blank?
+                      1
+                    else
+                      Post.where(user_id: current_user).maximum(:number) + 1
+                    end
     end
 
     if @post.save
