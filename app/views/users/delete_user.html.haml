@@ -1,8 +1,8 @@
 %h1
   .delete_messages
-    ご利用中の以下のユーザーを退会しても大丈夫ですか?
+    ご利用中のユーザーを退会しても大丈夫ですか?
 .delete-area
   .delete-user
     = "ユーザー名:#{@user.name}"
   .delete-btn
-    = link_to '退会する', user_path(@user.name), method:'delete', class: 'user-btn'
+    = link_to '退会する', user_path(@user.name), method:'delete', data: {confirm: '本当に退会しますか？'},class: 'btn btn-warning'

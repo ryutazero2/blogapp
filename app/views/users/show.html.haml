@@ -2,6 +2,9 @@
   .info-area
     .avatar-area
       = image_tag @user.avatar
+      - if current_user?(@user)
+        = link_to '退会', delete_user_path, class: 'user-btn'
+        = link_to '編集', edit_user_path, class: 'user-btn'
     .display_name-area
       %div
         = @user.display_name
@@ -11,12 +14,8 @@
     .profile-area
       %div
         = @user.profile
-  .btn-area
-    - if current_user?(@user)
-      = link_to '編集', edit_user_path, class: 'link-text'
-      = link_to '退会', delete_user_path, class: 'link-text'
 .post-info-area
-  - @posts.reverse_each do |post| 
+  - @posts.each do |post| 
     .posts-area
       .title-area
         .time-area
@@ -26,4 +25,7 @@
           %div
             = link_to post.title, user_show_post_path(@user.name,post.title,post.number)
       .content-area
-        = post.content
+        .content-text
+          = post.content
+  
+  = paginate @posts
