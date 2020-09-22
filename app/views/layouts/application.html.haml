@@ -32,9 +32,12 @@
     .flash-area
       -flash.each do |type, payload|
         - if payload.is_a?(Array)
-          - payload.each do |message|
-            .alert.alert-denger
-              = message
+          .alert.alert-danger
+            - for i in 0..payload.length - 1
+              = "#{payload[i]}"
+        - elsif (payload.include?('失敗'))
+          .alert.alert-danger
+            = payload
         - else
           .alert.alert-success
             = payload

@@ -1,5 +1,6 @@
 .post-info-area
   .posts-area
+    = link_to @post.user.name, user_path(@post.user.name)
     .title-area
       .text-area
         %div
@@ -7,7 +8,6 @@
       .content-area
         %div
           = @post.content
-
 .post-edit-area
   -if current_user?(current_user) && logged_in?
     = link_to '編集', user_edit_post_path(current_user.name,@post.title,@post.number),class: 'link-text'
