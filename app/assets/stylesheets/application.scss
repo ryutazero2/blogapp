@@ -63,12 +63,16 @@ header {
 }
 
 .area-right {
-    text-align: right
+    text-align: right;
+}
+
+.pagination {
+    justify-content: center;
 }
 
 @import 'home';
 @import 'users';
+@import 'posts';
 @import 'about';
 @import 'sessions';
-@import 'posts';
 @import "./actiontext";

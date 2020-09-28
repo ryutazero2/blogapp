@@ -4,10 +4,6 @@ class PostsController < ApplicationController
   before_action :set_post, except: %i[new create show]
   before_action :logged_in_user, only: %i[new]
 
-  def post_params
-    params.require(:post).permit(:title, :content)
-  end
-
   # rubocop:disable Metrics/AbcSize:
   def create
     @post = Post.new(title: params[:title], content: params[:content], user_id: current_user.id) do |post|
@@ -46,8 +42,7 @@ class PostsController < ApplicationController
   def edit; end
 
   def update
-    @post.title = params[:title]
-    @post.content = params[:content]
+    @post.content = post_params[:content]
     if @post.save
       redirect_to user_url(current_user.name)
     else
@@ -60,5 +55,11 @@ class PostsController < ApplicationController
     @post.destroy
     flash[:notice] = '記事を削除しました'
     redirect_to user_url(current_user.name)
+  end
+
+  private
+
+  def post_params
+    params.require(:post).permit(:title, :content)
   end
 end

@@ -32,3 +32,13 @@
         }
     }
 }
+
+trix-editor {
+    min-height: 20em;
+    overflow-y: auto;
+    height: 700px;
+}
+
+.trix-content {
+    word-break: break-all;
+}
