@@ -7,11 +7,11 @@ class PostsController < ApplicationController
   # rubocop:disable Metrics/AbcSize:
   def create
     @post = Post.new(title: params[:title], content: params[:content], user_id: current_user.id) do |post|
-      post.number = if Post.where(user_id: current_user).blank?
-                      1
-                    else
-                      Post.where(user_id: current_user).maximum(:number) + 1
-                    end
+      if Post.exists?(user_id: current_user)
+        post.number = Post.where(user_id: current_user).maximum(:number) + 1
+      else
+        post.number = 1
+      end
     end
 
     if @post.save

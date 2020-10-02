@@ -6,7 +6,7 @@ class Post < ApplicationRecord
 
   validates :title,
             presence: { message: 'を入力してください' },
-            length: { maximum: 512, message: 'は512文字以下にしてください' }
+            length: { maximum: 256, message: 'は256文字以下にしてください' }
 
   validates :content,
             presence: { message: 'を入力してください' }
