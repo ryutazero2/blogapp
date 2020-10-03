@@ -7,34 +7,38 @@
     = csp_meta_tag
     = stylesheet_link_tag 'application', media: 'all'
     = javascript_pack_tag 'application'
-    %body
-      .wrapper
-        %header
-          %h1.title 
-            = link_to 'blogapp', root_path, class: 'link-text'
-          %ul
-            %li.menu_item 
-              = link_to 'Home', root_path, class: 'link-text'
-            %li.menu_item 
-              = link_to 'about', about_path, class: 'link-text'
-            -if session[:user_id].blank?
-              %li.menu_item 
-                = link_to 'ログイン', login_path, class: 'link-text'
-              %li.menu_item 
-                = link_to '新規登録', register_path, class: 'link-text'
-            -else
-              %li.menu_item 
-                = link_to 'ログアウト', logout_path, method: :delete, class: 'link-text'
-              %li.menu_item
-                = link_to '新規投稿', blogs_new_path, class: 'link-text'
-              %li.menu_item
-                = link_to  'マイページ', user_path(current_user.name), class: 'link-text'
-        .flash-area
-          -flash.each do |type, payload|
-            - if payload.is_a?(Array)
-              - payload.each do |message|
-                %div
-                  = message
-            - else
-              = payload
-  =yield
+  %body
+    %nav.navbar.navbar-expand-lg.navbar-light.bg-light
+      = link_to 'blogapp', root_path, class: 'navbar-brand'
+      %collapse.navbar-collapse#navbarNav
+        %ul.navbar-nav.mr-auto
+        %ul.navbar-nav
+          %li.nav-item
+            = link_to 'Home', root_path, class: 'nav-link'
+          %li.nav-item
+            = link_to 'about', about_path, class: 'nav-link'
+          -if session[:user_id].blank?
+            %li.nav-item
+              = link_to 'ログイン', login_path, class: 'nav-link'
+            %li.nav-item
+              = link_to '新規登録', register_path, class: 'nav-link'
+          -else
+            %li.nav-item
+              = link_to 'ログアウト', logout_path, method: :delete, class: 'nav-link'
+            %li.nav-item
+              = link_to '新規投稿', blogs_new_path, class: 'nav-link'
+            %li.nav-item
+              = link_to  'マイページ', user_path(current_user.name), class: 'nav-link'
+    .flash-area
+      -flash.each do |type, payload|
+        - if payload.is_a?(Array)
+          .alert.alert-danger
+            - for i in 0..payload.length - 1
+              = "#{payload[i]}"
+        - elsif (payload.include?('失敗'))
+          .alert.alert-danger
+            = payload
+        - else
+          .alert.alert-success
+            = payload
+    = yield

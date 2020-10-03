@@ -1,14 +1,16 @@
 .post-info-area
   .posts-area
-    .title-area
+    .blog-area
+      .right-area
+        = @post.created_at.to_s(:datetime_jp)
+      .right-area
+        = link_to @post.user.display_name, user_path(@post.user.name)
       .text-area
         %div
           = @post.title
       .content-area
         %div
           = @post.content
-
-.post-edit-area
-  -if current_user?(current_user) && logged_in?
-    = link_to '編集', user_edit_post_path(current_user.name,@post.title,@post.number),class: 'link-text'
-    = link_to '削除', user_destroy_post_path(current_user.name,@post.title,@post.number),method:'delete', data: {confirm: 'この記事を削除しますか？'} , class: 'link-text'
+    -if current_user?(current_user) && logged_in?
+      = link_to '削除', user_destroy_post_path(current_user.name,@post.title,@post.number),method:'delete', data: {confirm: 'この記事を削除しますか？'} , class: 'user-btn'
+      = link_to '編集', user_edit_post_path(current_user.name,@post.title,@post.number),class: 'user-btn'

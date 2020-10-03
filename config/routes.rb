@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   resources :users, param: :name,  except: %i[index create] do
     get ':title-:number', to: 'posts#show', as: :show_post
     get ':title-:number/edit', to: 'posts#edit', as: :edit_post
-    post ':title-:number/edit', to: 'posts#update', as: :update_post
+    patch ':title-:number/edit', to: 'posts#update', as: :update_post
     delete ':title-:number/destroy', to: 'posts#destroy', as: :destroy_post
   end
 

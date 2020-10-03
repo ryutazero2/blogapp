@@ -12,6 +12,8 @@ body {
     max-width: 960px;
 }
 
+
+/*
 header {
     display: flex;
     width: 100vw;
@@ -32,6 +34,7 @@ header {
         text-align: right;
     }
 }
+*/
 
 .flash-area {
     background-color: white;
@@ -54,18 +57,22 @@ header {
     border-radius: 3px;
 }
 
-.alert {
-    color: red;
-    text-align: center;
-}
-
 .link-text {
     text-decoration: none;
     color: black;
 }
 
+.area-right {
+    text-align: right;
+}
+
+.pagination {
+    justify-content: center;
+}
+
 @import 'home';
 @import 'users';
+@import 'posts';
 @import 'about';
 @import 'sessions';
-@import 'posts';
+@import "./actiontext";

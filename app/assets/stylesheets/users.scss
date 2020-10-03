@@ -94,10 +94,11 @@
     .posts-area {
         width: 700px;
         margin: 0 auto;
-        .title-area {
+        .blog-area {
             padding: 10px;
             border: 2px solid;
             border-radius: 8px;
+            word-break: break-all;
             .time-area {
                 text-align: right;
                 font-size: smaller;
@@ -109,6 +110,7 @@
         .content-area {
             text-align: left;
             white-space: pre-line;
+            padding: 10px;
         }
     }
 }

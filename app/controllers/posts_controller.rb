@@ -6,11 +6,11 @@ class PostsController < ApplicationController
 
   # rubocop:disable Metrics/AbcSize:
   def create
-    @post = Post.new(title: params[:title],content: params[:content],user_id: current_user.id) do |post|
-      if Post.where(user_id: current_user).blank?
-        post.number = 1
-      else
+    @post = Post.new(title: params[:title], content: params[:content], user_id: current_user.id) do |post|
+      if Post.exists?(user_id: current_user)
         post.number = Post.where(user_id: current_user).maximum(:number) + 1
+      else
+        post.number = 1
       end
     end
 
@@ -42,8 +42,7 @@ class PostsController < ApplicationController
   def edit; end
 
   def update
-    @post.title = params[:title]
-    @post.content = params[:content]
+    @post.content = post_params[:content]
     if @post.save
       redirect_to user_url(current_user.name)
     else
@@ -56,5 +55,11 @@ class PostsController < ApplicationController
     @post.destroy
     flash[:notice] = '記事を削除しました'
     redirect_to user_url(current_user.name)
+  end
+
+  private
+
+  def post_params
+    params.require(:post).permit(:title, :content)
   end
 end

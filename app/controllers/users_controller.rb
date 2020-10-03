@@ -40,7 +40,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    @posts = @user.posts
+    @posts = @user.posts.order(created_at: :desc).page(params[:page]).per(5)
   end
 
   def edit; end
