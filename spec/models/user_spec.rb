@@ -5,6 +5,10 @@ RSpec.describe User, type: :model do
     expect(FactoryBot.create(:user)).to be_valid
   end
 
+  it "ユーザー名に-_を入れることができる登録できる" do
+    expect(FactoryBot.build(:user,name: "-_user-_")).to be_valid
+  end
+
   it "ユーザー名がない場合登録できない" do
     expect(FactoryBot.build(:user, name: "")).to_not be_valid 
   end
