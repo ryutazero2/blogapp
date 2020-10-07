@@ -9,7 +9,6 @@ services:
     command: /bin/sh -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"
     volumes:
       - ./:/app
-      - ignore_dir:/app/tmp
       - ignore_dir:/app/public
     ports:
       - 3000:3000
@@ -18,7 +17,13 @@ services:
     depends_on:
       - db
     environment:
+      SELENIUM_DRIVER_URL: http://selenium_chrome:4444/wd/hub
       RAILS_ENV: development
+
+  selenium_chrome:
+    image: selenium/standalone-chrome-debug
+    logging:
+      driver: none
 
   db:
     restart: always
