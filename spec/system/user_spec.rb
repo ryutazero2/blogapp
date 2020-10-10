@@ -1,5 +1,4 @@
 require 'rails_helper'
-
 RSpec.describe 'Users', type: :system do
     it "ユーザーを新規追加する" do
         user = FactoryBot.build(:user)
