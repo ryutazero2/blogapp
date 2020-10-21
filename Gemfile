@@ -25,6 +25,7 @@ group :development, :test do
   gem 'factory_bot_rails'
   gem 'rubocop'
   gem 'rubocop-rails'
+  gem 'database_cleaner-active_record'
 end
 
 group :development do
@@ -38,5 +39,4 @@ group :test do
   gem 'capybara', '>= 2.15'
   gem 'selenium-webdriver'
   gem 'webdrivers'
-
 end
