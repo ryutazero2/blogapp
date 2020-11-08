@@ -3,7 +3,7 @@ FactoryBot.define do
     sequence(:name) { |n| "user000#{n}" }
     password {'user0001'}
     avatar { Rack::Test::UploadedFile.new(File.open(Rails.root.join('app', 'assets', 'images', 'default.png'))) }
-    display_name{'user2'}
+    display_name{'user'}
     profile {'yorosiku'}
   end
 end
