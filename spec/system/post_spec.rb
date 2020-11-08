@@ -64,7 +64,7 @@ RSpec.describe 'Posts', type: :system do
         describe '記事を削除する' do
             context '記事を削除する' do
                 it '記事の削除に成功する' do
-                    visit user_show_post_path(user.name,post.title,post.number)
+                    visit user_show_post_path(post.user.name,post.title,post.number)
                     find('a', text: '削除').click
                     accept_confirm
                     expect(current_path).to eq user_path(user.name)
