@@ -3,9 +3,9 @@
   = form_with url: login_path , local:true do |form|
     %div
       %div
-        = form.label :ユーザ名
+        = form.label :name,'ユーザー名'
         = form.text_field :name
       %div
-        = form.label :パスワード
+        = form.label :password,'パスワード'
         = form.password_field :password
     = form.submit 'Login', class: 'login-btn' 
